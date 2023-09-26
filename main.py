@@ -24,16 +24,20 @@ pyautogui.moveTo(width, height)
 color = pyautogui.pixel(width, height)
 hexColor = '%02x%02x%02x' % color
 print(hexColor)
-if hexColor == '0089ce':
+if hexColor == '2b87d1':
     print("test")
     pyautogui.click()
     for x in range(levels):
         # checks every time if the color is not green,
         # when it is green it delays and then clicks the screen and waits for the next round
-        while hexColor != '18d971':
+        while hexColor != '4bdb6a':
+            print("test while loop")
+            print(hexColor)
             color = pyautogui.pixel(width, height)
             hexColor = '%02x%02x%02x' % color
-        print(hexColor)
+            print("test na calculatie")
+            print(hexColor)
+        #print(hexColor)
         time.sleep(delay)
         pyautogui.click()
         if x != 4:

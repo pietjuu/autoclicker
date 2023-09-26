@@ -14,33 +14,37 @@ levels = 5
 
 # calculate screensize and position to click
 (width, height) = pyautogui.size()
-print(width, height)
 width = int(width / 2)
 height = int(height / 4)
 
 pyautogui.moveTo(width, height)
 
-# gets the current hex color of the game
-color = pyautogui.pixel(width, height)
-hexColor = "%02x%02x%02x" % color
-print(hexColor)
-if hexColor == "2b87d1":
-    pyautogui.click()
-    for x in range(levels):
-        # checks every time if the color is not green,
-        # when it is green it delays and then clicks the screen and waits for the next round
-        while hexColor != "4bdb6a":
-            color = pyautogui.pixel(width, height)
-            hexColor = "%02x%02x%02x" % color
-            print("test na calculatie")
-            print(hexColor)
-        # print(hexColor)
-        time.sleep(delay)
+
+def autoclick():
+    global finished
+    global false_count
+    # gets the current hex color of the game
+    color = pyautogui.pixel(width, height)
+    hexColor = "%02x%02x%02x" % color
+
+    if hexColor == "2b87d1":
         pyautogui.click()
-        if x != 4:
+        for x in range(levels):
+            # checks every time if the color is not green,
+            # when it is green it delays and then clicks the screen and waits for the next round
+            while hexColor != "4bdb6a":
+                color = pyautogui.pixel(width, height)
+                hexColor = "%02x%02x%02x" % color
+            time.sleep(delay)
             pyautogui.click()
-        hexColor = ""
-else:
-    pyautogui.alert(
-        text="error"
-        , title="Game not detected!", button="Ok")
+            if x != 4:
+                pyautogui.click()
+            hexColor = ""
+
+    else:
+        pyautogui.alert(
+            text="error"
+            , title="Game not detected!", button="Ok")
+
+
+autoclick()

@@ -5,7 +5,6 @@ import cv2
 import numpy as np
 import mouse
 
-
 # color of target to aim for
 target_color = (149, 195, 232)
 
@@ -17,7 +16,6 @@ contour_size_threshold = 100
 
 # button to start / stop program
 start_button = "p"
-
 
 # flag that is set when program is done (all 30 targets clicked)
 finished = False

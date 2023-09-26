@@ -37,7 +37,7 @@ if hexColor == '2b87d1':
             hexColor = '%02x%02x%02x' % color
             print("test na calculatie")
             print(hexColor)
-        #print(hexColor)
+        # print(hexColor)
         time.sleep(delay)
         pyautogui.click()
         if x != 4:

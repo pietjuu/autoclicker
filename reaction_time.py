@@ -21,8 +21,6 @@ pyautogui.moveTo(width, height)
 
 
 def autoclick():
-    global finished
-    global false_count
     # gets the current hex color of the game
     color = pyautogui.pixel(width, height)
     hexColor = "%02x%02x%02x" % color

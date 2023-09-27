@@ -19,6 +19,8 @@ start_button = "p"
 
 # flag that is set when program is done (all 30 targets clicked)
 finished = False
+# Define the number of targets you want to click (30 in this case)
+target_amount = 30
 
 
 def check_for_save_button(scrot):
@@ -34,6 +36,7 @@ def check_for_save_button(scrot):
 
 def find_and_click_target(scrot):
     # Finding the target
+    global target_amount
     target_mask = cv2.inRange(scrot, target_color, target_color)
     target_contours, _ = cv2.findContours(target_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     target_contours = sorted(target_contours, key=cv2.contourArea, reverse=True)
@@ -52,13 +55,16 @@ while True:
 
 time.sleep(0.2)
 
-# run program
+# run program for a specific number of iterations (30 in this case)
 while True:
-    # kill program by pressing start_button (automatically ends when done)
-    if keyboard.is_pressed(start_button) or finished:
-        break
-
     # take screenshot and call function
     scrot = np.array(pyautogui.screenshot())
     check_for_save_button(scrot)
+
+    # Check if the program should be terminated
+    if keyboard.is_pressed(start_button) or finished:
+        break
+
     find_and_click_target(scrot)
+    target_amount = target_amount - 1
+    print(target_amount)

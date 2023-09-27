@@ -41,8 +41,7 @@ def autoclick():
 
     else:
         pyautogui.alert(
-            text="error"
-            , title="Game not detected!", button="Ok")
+            text="error", title="Game not detected!", button="Ok")
 
 
 autoclick()

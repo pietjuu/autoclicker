@@ -19,7 +19,6 @@ start_button = "p"
 
 # flag that is set when program is done (all 30 targets clicked)
 finished = False
-# Define the number of targets you want to click (30 in this case)
 target_amount = 30
 
 
@@ -35,8 +34,6 @@ def check_for_save_button(scrot):
 
 
 def find_and_click_target(scrot):
-    # Finding the target
-    global target_amount
     target_mask = cv2.inRange(scrot, target_color, target_color)
     target_contours, _ = cv2.findContours(target_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     target_contours = sorted(target_contours, key=cv2.contourArea, reverse=True)

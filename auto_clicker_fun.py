@@ -1,6 +1,6 @@
 import pyautogui
 import threading
-import keyboard  # You need to install the `keyboard` library using `pip install keyboard`
+import keyboard
 
 # Define the target color in RGB format
 target_color = (255, 255, 255)
@@ -22,9 +22,9 @@ def check_failsafe():
 # Function to continuously check the screen for the target color
 def check_screen():
     global stop_thread
-    while True:  # Keep checking indefinitely
+    while True:
         if stop_thread:
-            break  # Exit the loop if the failsafe is activated
+            break  # TODO Exit the loop if the failsafe is activated
         screenshot = pyautogui.screenshot()
 
         for x in range(screenshot.width):

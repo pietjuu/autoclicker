@@ -18,9 +18,12 @@ import pytesseract
 import threading
 import keyboard
 
+"""
 # Open the web browser
 webbrowser.open("https://www.humanbenchmark.com/tests/number-memory", new=2)
 time.sleep(5)
+
+"""
 
 # create an empty set to store the coordinates of the white boxes
 white_box_coordinates = set()
@@ -77,3 +80,6 @@ def clicker():
         mouse = Controller()
         mouse.position = (i[0] + 744, i[1] + 130)
         mouse.click(Button.left, 1)
+
+
+

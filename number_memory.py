@@ -82,4 +82,41 @@ def clicker():
         mouse.click(Button.left, 1)
 
 
+while True:
+    stc = mss.mss()
+    # Get raw pixels from the screen, save it to a Numpy array
+    scr = stc.grab(
+        {
+            "left": 563,
+            "top": 260,
+            "width": 777,
+            "height": 100,
+        }
+    )
 
+    frame = np.array(scr)
+    # white mask for the frame
+    hsvframe = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    lower_white = np.array([0, 0, 0], dtype=np.uint8)
+    upper_white = np.array([0, 0, 255], dtype=np.uint8)
+    white_mask = cv2.inRange(hsvframe, lower_white, upper_white)
+    # according to color density and when color density is greater than we enter numbers
+    if round(np.average(hsvframe[50:, :, 0])) == 105:
+        keyboard.write(flag, delay=0.2)
+        time.sleep(1)
+        mouse.position = (955, 400)
+        mouse.click(Button.left, 1)
+        time.sleep(1)
+        mouse.position = (955, 444)
+        mouse.click(Button.left, 1)
+    # put number in frame
+    cv2.putText(frame, f"number: {flag}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), )
+    # show the frame
+    cv2.imshow("main", frame)
+    cv2.setWindowProperty("main", cv2.WND_PROP_TOPMOST, 1)
+    # if we press q then it will break
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        cv2.destroyAllWindows()
+        cv2.waitKey(1)
+        flag2 = False
+        sys.exit()

@@ -1,0 +1,17 @@
+ast
+cv2
+itertools.islice
+keyboard
+mouse
+mss
+numpy
+os
+pyautogui
+pynput.mouse.Button
+pynput.mouse.Controller
+pytesseract
+shlex
+sys
+threading
+time
+webbrowser

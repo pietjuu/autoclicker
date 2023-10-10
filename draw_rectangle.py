@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# import modules
 import cv2
 import numpy as np
 import pyautogui

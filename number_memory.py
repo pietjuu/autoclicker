@@ -49,10 +49,10 @@ def get_number():
         stc = mss.mss()  # create an instance of mss class
         scr = stc.grab(  # grab the screen
             {
-                "left": 563,
-                "top": 260,
-                "width": 777,
-                "height": 100,
+                "left": 2,
+                "top": 66,
+                "width": 64,
+                "height": 57,
             }
         )
         frame = np.array(scr)
@@ -85,12 +85,12 @@ def clicker():
 while True:
     stc = mss.mss()
     # Get raw pixels from the screen, save it to a Numpy array
-    scr = stc.grab(
+    scr = stc.grab(  # grab the screen
         {
-            "left": 563,
-            "top": 260,
-            "width": 777,
-            "height": 100,
+            "left": 2,
+            "top": 66,
+            "width": 64,
+            "height": 57,
         }
     )
 

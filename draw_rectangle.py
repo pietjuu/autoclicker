@@ -9,7 +9,7 @@ import time
 from pynput.mouse import Button, Controller
 
 # Open the web browser
-webbrowser.open("https://humanbenchmark.com/tests/sequence", new=2)
+#webbrowser.open("https://humanbenchmark.com/tests/sequence", new=2)
 time.sleep(5)  # time to open the browser
 
 mouse = Controller()

@@ -23,8 +23,8 @@ html = driver.page_source
 soup = BeautifulSoup(html, "html.parser")
 spans = soup.find_all("span", class_="incomplete")
 text_to_type = "".join([span.get_text() for span in spans])
-print(text_to_type)
 
+# Wait some time to prevent that weird stuff happens
 time.sleep(1)
 
 # click the text box
@@ -32,8 +32,8 @@ mouse = Controller()
 mouse.position = (879, 527)
 mouse.click(Button.left, 1)
 
-print("clicked")
+# type the text
 pyautogui.typewrite(text_to_type, interval=0)
-print("typed")
 
+# Wait for the user to press enter to close the browser
 input("Press Enter to continue...")

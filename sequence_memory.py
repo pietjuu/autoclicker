@@ -5,6 +5,9 @@
 import pyautogui
 import time
 
+"""
+hardcode the pixels to check, when pixel is white add that to list. then click pixels in order of list
+"""
 
 def compute_positions(top_left, bottom_right):
     width = (bottom_right[0] - top_left[0]) // 2

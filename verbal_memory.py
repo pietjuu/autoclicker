@@ -40,7 +40,7 @@ print(seen_words)
 
 # Initialize a counter for the number of clicks
 click_count = 0
-max_clicks = 1500  # Define the maximum number of clicks
+max_clicks = 1500
 
 while click_count < max_clicks:
     # Re-fetch the spans inside the loop to reflect the updated content
@@ -53,12 +53,10 @@ while click_count < max_clicks:
         if word in seen_words:
             mouse.position = (868, 625)
             mouse.click(Button.left, 1)
-            print(seen_words)
         else:
             mouse.position = (1031, 625)
             mouse.click(Button.left, 1)
             seen_words.add(word)
-            print(seen_words)
         click_count += 1
 
         # Add a short delay between clicks

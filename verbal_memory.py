@@ -34,14 +34,15 @@ time.sleep(3)
 # Get the current position of the mouse cursor
 current_position = pyautogui.position()
 
-# Print the cursor's x and y coordinates
-print("Mouse Cursor Position: x =", current_position[0], ", y =", current_position[1])
-print("clicked start")
-
 # add word to set, if word is already in set, click "SEEN", else click "NEW"
 seen_words = set()
 print(seen_words)
-while True:
+
+# Initialize a counter for the number of clicks
+click_count = 0
+max_clicks = 1500  # Define the maximum number of clicks
+
+while click_count < max_clicks:
     # Re-fetch the spans inside the loop to reflect the updated content
     soup = get_soup(driver)
     spans = soup.find_all("div", class_="word")
@@ -58,6 +59,11 @@ while True:
             mouse.click(Button.left, 1)
             seen_words.add(word)
             print(seen_words)
-        time.sleep(0.1)
+        click_count += 1
+
+        # Add a short delay between clicks
+        time.sleep(0)
     else:
         break
+
+input("Press Enter to continue...")

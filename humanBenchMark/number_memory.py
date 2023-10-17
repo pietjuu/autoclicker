@@ -28,6 +28,17 @@ def get_soup(driver):
     return BeautifulSoup(driver.page_source, "html.parser")
 
 
+def check_if_number_is_on_the_screen():
+    soup = get_soup(driver)
+    divs = soup.find_all("div", class_="big-number")
+    if not divs:
+        print("number is gone")
+        return True  # list is empty so number is gone
+    else:
+        print("number is still there")
+        return False
+
+
 # Wait some time to prevent that weird stuff happens
 time.sleep(1)
 
@@ -40,30 +51,30 @@ time.sleep(0.5)
 write_count = 0
 max_Write = 250
 
+# TODO check if number is still there, when it is gone write the number down (check html)
 while write_count < max_Write:
     # Re-fetch the spans inside the loop to reflect the updated content
     soup = get_soup(driver)
     divs = soup.find_all("div", class_="big-number")
-    print(divs)
     number = "".join([div.get_text() for div in divs])
-    print(number)
-    print("test")
-    time.sleep(4)
-    if number:
-        print(number)
 
-        pyautogui.typewrite(number, interval=0)
+    while not check_if_number_is_on_the_screen():
+        if number:
+            print(number)
+            pyautogui.typewrite(number, interval=0)
 
-        mouse.position = (943, 674)
-        mouse.click(Button.left, 1)
-        time.sleep(2)
+            time.sleep(2)
+            mouse.position = (943, 674)
+            mouse.click(Button.left, 1)
+            time.sleep(2)
 
-        mouse.position = (945, 756)
-        mouse.click(Button.left, 1)
-        time.sleep(2)
+            mouse.position = (945, 756)
+            mouse.click(Button.left, 1)
+            time.sleep(2)
+            write_count += 1
+            number = ""
+        else:
+            print("number is gone")
 
-        write_count += 1
-    else:
-        break
 
 input("Press Enter to continue...")

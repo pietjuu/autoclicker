@@ -36,7 +36,6 @@ current_position = pyautogui.position()
 
 # add word to set, if word is already in set, click "SEEN", else click "NEW"
 seen_words = set()
-print(seen_words)
 
 # Initialize a counter for the number of clicks
 click_count = 0
